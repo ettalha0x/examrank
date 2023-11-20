@@ -1,49 +1,44 @@
 #include "SpellBook.hpp"
+#include "ASpell.hpp"
 
-SpellBook::SpellBook(SpellBook const & src)
-{
-	*this = src;
-}
+SpellBook::SpellBook() {};
 
-SpellBook & SpellBook::operator=(SpellBook const & src)
-{
-	_SpellBook = src._SpellBook;
-	return (*this);
-}
+SpellBook::SpellBook(SpellBook const &copy) {
+    
+    *this = copy;
+};
 
-SpellBook::SpellBook()
-{}
+SpellBook& SpellBook::operator=(SpellBook const &other) {
 
-SpellBook::~SpellBook()
-{
-	for (std::map<std::string, ASpell*>::iterator it = _SpellBook.begin(); it != _SpellBook.end(); ++it) {
+    (void)other;
+    return *this;
+};
+
+SpellBook::~SpellBook() {
+    std::map<std::string, ASpell *>::iterator it_begin = this->arr_spell.begin();
+    std::map<std::string, ASpell *>::iterator it_end = this->arr_spell.end();
+    while (it_begin != it_end)
+    {
+        delete it_begin->second;
+        ++it_begin;
+    }
+    this->arr_spell.clear();
+};
+
+void    SpellBook::learnSpell(ASpell *spell) {
+    if (spell)
+        arr_spell.insert(std::pair<std::string, ASpell *>(spell->getName(), spell->clone()));
+};
+void    SpellBook::forgetSpell(std::string const &spell_name) {
+    std::map<std::string, ASpell *>::iterator it = arr_spell.find(spell_name);
+	if (it != arr_spell.end())
 		delete it->second;
-	}
-	_SpellBook.clear();
-}
-
-void SpellBook::learnSpell(ASpell* spell)
-{
-	if (spell)
-	{
-		_SpellBook[spell->getName()] = spell->clone();
-	}
-}
-
-void SpellBook::forgetSpell(std::string const & SpellName)
-{
-	std::map<std::string, ASpell*>::iterator it = _SpellBook.find(SpellName);
-	if (it != _SpellBook.end())
-	{
-		delete it->second;
-		_SpellBook.erase(it);
-	}
-}
-
-ASpell* SpellBook::createSpell(std::string const &SpellName)
-{
-	ASpell* tmp = NULL;
-	if (_SpellBook.find(SpellName) != _SpellBook.end())
-		tmp = _SpellBook[SpellName];
-	return (tmp);
-}
+    arr_spell.erase(spell_name);
+};
+ASpell*    SpellBook::createSpell(std::string const &spell_name) {
+    std::map<std::string, ASpell *>::iterator it = arr_spell.find(spell_name);
+    if (it != arr_spell.end())
+        return arr_spell[spell_name];
+    return NULL;
+   
+};

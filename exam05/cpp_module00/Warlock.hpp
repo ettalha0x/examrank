@@ -1,24 +1,21 @@
-#ifndef WARLOCK_HPP
-#define WARLOCK_HPP
+#ifndef Warlock_hpp
+#define Warlock_hpp
+
 #include <iostream>
 
-class Warlock
-{
+class Warlock {
     private:
-        std::string name;
-        std::string title;
-
+        std::string _name;
+        std::string _title;
         Warlock();
-        Warlock(Warlock const &ref);
-        Warlock &operator=(Warlock const &ref);
+        Warlock(Warlock const &copy);
+        Warlock& operator=(Warlock const &other);
     public:
         Warlock(std::string const &name, std::string const &title);
         ~Warlock();
-
         std::string const &getName() const;
         std::string const &getTitle() const;
-        void setTitle(std::string const &title);
-
+        void        setTitle(std::string const &title);
         void introduce() const;
 };
 

@@ -1,63 +1,55 @@
 #include "Warlock.hpp"
 
-Warlock::Warlock(std::string name, std::string title) : _name(name), _title(title)
-{
-	std::cout << _name << ": This looks like another boring day." << std::endl;
+Warlock::Warlock() {};
+
+Warlock::Warlock(std::string const &name, std::string const &title) :_name(name), _title(title){
+    std::cout << _name << ": " << "This looks like another boring day." << std::endl;
 }
 
-Warlock::Warlock()
-{
+Warlock::Warlock(Warlock const &copy) {
+    
+    *this = copy;
+};
+
+Warlock& Warlock::operator=(Warlock const &other) {
+    this->_name = other.getName();
+    this->_title = other.getTitle();
+
+    return *this;
+};
+
+Warlock::~Warlock() {
+    std::cout << _name << ": " << "My job here is done!" << std::endl;
+};
+
+std::string const &Warlock::getName() const {
+    return _name;
 }
 
-Warlock & Warlock::operator=(Warlock const & rhs)
-{
-	this->_name = rhs._name;
-	this->_title = rhs._title;
-	return *this;
+std::string const &Warlock::getTitle() const {
+    return _title;
 }
 
-Warlock::Warlock(Warlock const & obj)
-{
-	*this = obj;
+void Warlock::setTitle(std::string const &title) {
+    _title = title;
 }
 
-Warlock::~Warlock()
-{
-	std::cout << _name << ": My job here is done!" << std::endl;
+void Warlock::introduce() const {
+    std::cout << _name << ": " << "I am " << _name << ", " << _title  << "!"<< std::endl;
 }
 
-std::string const & Warlock::getName() const
-{
-	return (_name);
-}
-
-std::string const & Warlock::getTitle() const
-{
-	return (_title);
-}
-
-void	Warlock::setTitle(std::string const & str)
-{
-	_title = str;
-}
-
-void	Warlock::introduce() const
-{
-	std::cout << _name << ": I am " << _name << ", " << _title << "!" << std::endl;
-}
-
-void Warlock::learnSpell(ASpell* spell)
-{
-	_SpellBook.learnSpell(spell);
-}
-
-void Warlock::forgetSpell(std::string SpellName)
-{
-	_SpellBook.forgetSpell(SpellName);
-}
-
-void Warlock::launchSpell(std::string SpellName, ATarget & target)
-{
-	if (_SpellBook.createSpell(SpellName))
-		_SpellBook.createSpell(SpellName)->launch(target);
-}
+void    Warlock::learnSpell(ASpell *spell) {
+    if (spell)
+        arr.insert(std::pair<std::string, ASpell*> (spell->getName(), spell->clone()));
+};
+void    Warlock::forgetSpell(std::string spell_name) {
+    std::map<std::string, ASpell*>::iterator it = arr.find(spell_name);
+    if (it != arr.end())
+        delete it->second;
+    arr.erase(spell_name);
+};
+void    Warlock::launchSpell(std::string spell_name, ATarget const &target) {
+    ASpell* spell = arr[spell_name];
+    if (spell)
+        spell->launch(target);
+};

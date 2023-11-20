@@ -1,5 +1,6 @@
 NAME = main
-SRCS = main1.cpp Warlock.cpp ASpell.cpp ATarget.cpp Dummy.cpp Fwoosh.cpp
+SRCS = main.cpp ../cpp_module01/Warlock.cpp \
+		../cpp_module01/ASpell.cpp ../cpp_module01/ATarget.cpp ../cpp_module01/Dummy.cpp ../cpp_module01/Fwoosh.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 FLAGS = -Wall -Wextra -Werror -std=c++98

@@ -1,14 +1,8 @@
-#include "Warlock.hpp"
-#include "ASpell.hpp"
-#include "ATarget.hpp"
-#include "Dummy.hpp"
-#include "Fwoosh.hpp"
-#include "BrickWall.hpp"
-#include "Fireball.hpp"
-#include "Polymorph.hpp"
-#include "SpellBook.hpp"
-#include "TargetGenerator.hpp"
-
+#include "../cpp_module02/Warlock.hpp"
+#include "../cpp_module02/BrickWall.hpp"
+#include "../cpp_module02/Polymorph.hpp"
+#include "../cpp_module02/Fireball.hpp"
+#include "../cpp_module02/TargetGenerator.hpp"
 
 int main()
 {
