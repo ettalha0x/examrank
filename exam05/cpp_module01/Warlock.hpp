@@ -1,11 +1,9 @@
-#ifndef Warlock_hpp
-#define Warlock_hpp
+#pragma once
 
 #include <iostream>
 #include <map>
 #include "ATarget.hpp"
 #include "ASpell.hpp"
-class ATarget;
 
 class Warlock {
     private:
@@ -15,7 +13,7 @@ class Warlock {
         Warlock(Warlock const &copy);
         Warlock& operator=(Warlock const &other);
 
-        std::map<std::string, ASpell *> arr;
+        std::map<std::string, ASpell*> arr;
     public:
         Warlock(std::string const &name, std::string const &title);
         ~Warlock();
@@ -30,4 +28,3 @@ class Warlock {
 
 };
 
-#endif

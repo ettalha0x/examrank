@@ -43,9 +43,6 @@ void    Warlock::learnSpell(ASpell *spell) {
         arr.insert(std::pair<std::string, ASpell*> (spell->getName(), spell->clone()));
 };
 void    Warlock::forgetSpell(std::string spell_name) {
-    std::map<std::string, ASpell*>::iterator it = arr.find(spell_name);
-    if (it != arr.end())
-        delete it->second;
     arr.erase(spell_name);
 };
 void    Warlock::launchSpell(std::string spell_name, ATarget const &target) {

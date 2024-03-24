@@ -1,5 +1,4 @@
-#ifndef Dummy_hpp
-#define Dummy_hpp
+#pragma once
 
 #include "ASpell.hpp"
 #include "ATarget.hpp"
@@ -15,4 +14,3 @@ class Dummy : public ATarget {
         virtual Dummy*        clone() const;
 };
 
-#endif

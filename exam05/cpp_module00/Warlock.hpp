@@ -1,5 +1,4 @@
-#ifndef Warlock_hpp
-#define Warlock_hpp
+#pragma once
 
 #include <iostream>
 
@@ -19,4 +18,3 @@ class Warlock {
         void introduce() const;
 };
 
-#endif

@@ -1,5 +1,5 @@
-#ifndef Fireball_hpp
-#define Fireball_hpp
+#pragma once
+
 
 #include "ASpell.hpp"
 #include "ATarget.hpp"
@@ -15,4 +15,3 @@ class Fireball : public ASpell {
         virtual Fireball*        clone() const;
 };
 
-#endif

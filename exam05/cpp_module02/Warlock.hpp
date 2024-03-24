@@ -1,10 +1,11 @@
-#ifndef Warlock_hpp
-#define Warlock_hpp
+#pragma once
 
 #include <iostream>
 #include <map>
 #include "ATarget.hpp"
 #include "ASpell.hpp"
+#include "SpellBook.hpp"
+
 class ATarget;
 
 class Warlock {
@@ -15,7 +16,7 @@ class Warlock {
         Warlock(Warlock const &copy);
         Warlock& operator=(Warlock const &other);
 
-        std::map<std::string, ASpell *> arr;
+        SpellBook book;
     public:
         Warlock(std::string const &name, std::string const &title);
         ~Warlock();
@@ -29,5 +30,3 @@ class Warlock {
         void    launchSpell(std::string spell_name, ATarget const &target);
 
 };
-
-#endif

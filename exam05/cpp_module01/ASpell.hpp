@@ -1,8 +1,8 @@
-#ifndef ASpell_hpp
-#define ASpell_hpp
+#pragma once
 
 #include <iostream>
 #include "ATarget.hpp"
+
 class ASpell {
     protected:
         std::string _name;
@@ -20,4 +20,3 @@ class ASpell {
         virtual ASpell*        clone() const = 0;
 };
 
-#endif

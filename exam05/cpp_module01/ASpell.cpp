@@ -5,12 +5,12 @@ ASpell::ASpell(ASpell const &copy) {
     *this = copy;
 };
 ASpell& ASpell::operator=(ASpell const &other) {
-if (this != &other)
-{
-    _name = other._name;
-    _effects = other._effects;
-}
-return *this;
+    if (this != &other)
+    {
+        _name = other._name;
+        _effects = other._effects;
+    }
+    return *this;
 };
 ASpell::ASpell(std::string const &name, std::string const &effects) :_name(name), _effects(effects) {};
 ASpell::~ASpell() {};

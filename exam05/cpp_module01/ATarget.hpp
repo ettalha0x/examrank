@@ -1,7 +1,7 @@
-#ifndef ATarget_hpp
-#define ATarget_hpp
+#pragma once
 
 #include <iostream>
+
 class ASpell;
 
 class ATarget {
@@ -18,4 +18,3 @@ class ATarget {
         void    getHitBySpell(ASpell const &spell) const ;
 };
 
-#endif

@@ -1,5 +1,5 @@
-#ifndef BrickWall_hpp
-#define BrickWall_hpp
+#pragma once
+
 
 #include "ASpell.hpp"
 #include "ATarget.hpp"
@@ -15,4 +15,3 @@ class BrickWall : public ATarget {
         virtual BrickWall*        clone() const;
 };
 
-#endif
